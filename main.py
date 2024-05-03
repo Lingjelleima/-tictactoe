@@ -1,6 +1,6 @@
 #main.
-lst=[0,0,0,0,0,0,0,0,0]
-def board():
+lst=[0,0,0,0,0,0,0,0,0]#create a list
+def board():#create a board
     count=0
     for i in range(3):
         for j in range(3):
@@ -11,13 +11,13 @@ def board():
             count+=1
         print()
 
-def swap_users():
+def swap_users():#command to change X2O & O2X
     if globals()['user']=='X':
         globals()['user']='O'
     else:
         globals()['user']='X'
 
-def win():
+def win():#conditions to display win
     if lst[0]=='X' and lst[1]=='X' and lst[2]=='X':
         board()
         globals()['game']=False
@@ -83,29 +83,29 @@ def win():
         globals()['game']=False
         print("Player O wins!")
 
-def is_full():
+def is_full():#all cells full
     return all(cell != 0 for cell in lst)
 
 
 
 game=True
-user='X'
+user='X'#initialise user as x
 
 while game:
     board()
-    n = int(input(f"Player {user}, enter your selection (1-9): "))
+    n = int(input(f"Player {user}, enter your selection (1-9): "))#select their positiom
     if  1 <= n <= 9 and lst[n - 1] == 0:
         lst[n - 1] = user
         if win():
             board()
-            print(f"Player {user} wins!")
+            print(f"Player {user} wins!")#when a condition is satisfied
             game = False
         elif is_full ==True:
             board()
-            print("It's a tie!")
+            print("It's a tie!")#when all the cells are full
             game = False
         else:
-            swap_users()
+            swap_users()#change players
     else:
-        print("Invalid move. Try again.")
-print("---End---")
+        print("Invalid move. Try again.")#position choose id invalid
+print("---End---")#placeholder to confirm end of program
